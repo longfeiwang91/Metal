@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		175C168BF218C6437DE6B494 /* Pods_MetalProduct.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C356B75CF014DF5952FCFC44 /* Pods_MetalProduct.framework */; };
 		5B04F6F528F1668800176E17 /* DFMetalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F6F428F1668800176E17 /* DFMetalApi.swift */; };
-		5B04F6F728F16A2400176E17 /* DFMetalRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F6F628F16A2400176E17 /* DFMetalRender.swift */; };
+		5B04F6F728F16A2400176E17 /* DFMetalTriangleRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F6F628F16A2400176E17 /* DFMetalTriangleRender.swift */; };
 		5B04F6F928F1756C00176E17 /* Metal渲染流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B04F6F828F1756C00176E17 /* Metal渲染流程.png */; };
+		5B04F6FD28F1841100176E17 /* DFTriangleShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F6FC28F1841100176E17 /* DFTriangleShader.metal */; };
+		5B04F70128F19A6A00176E17 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70028F19A6A00176E17 /* Data.m */; };
+		5B04F70428F3C4B000176E17 /* UIMetalDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */; };
+		5B04F70628F3CBA200176E17 /* DFMetalRectangleRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */; };
 		5B3148FB28F14BAC003326DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3148FA28F14BAC003326DA /* AppDelegate.swift */; };
 		5B31490428F14BAD003326DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B31490328F14BAD003326DA /* Assets.xcassets */; };
 		5B31490728F14BAD003326DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B31490528F14BAD003326DA /* LaunchScreen.storyboard */; };
@@ -21,8 +25,15 @@
 		01E23B898B1E725C1DA8AB69 /* Pods-MetalProduct.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetalProduct.release.xcconfig"; path = "Target Support Files/Pods-MetalProduct/Pods-MetalProduct.release.xcconfig"; sourceTree = "<group>"; };
 		1AD6D451AAB5AD9736514B88 /* Pods-MetalProduct.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetalProduct.debug.xcconfig"; path = "Target Support Files/Pods-MetalProduct/Pods-MetalProduct.debug.xcconfig"; sourceTree = "<group>"; };
 		5B04F6F428F1668800176E17 /* DFMetalApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalApi.swift; sourceTree = "<group>"; };
-		5B04F6F628F16A2400176E17 /* DFMetalRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalRender.swift; sourceTree = "<group>"; };
+		5B04F6F628F16A2400176E17 /* DFMetalTriangleRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalTriangleRender.swift; sourceTree = "<group>"; };
 		5B04F6F828F1756C00176E17 /* Metal渲染流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Metal渲染流程.png"; sourceTree = "<group>"; };
+		5B04F6FC28F1841100176E17 /* DFTriangleShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DFTriangleShader.metal; sourceTree = "<group>"; };
+		5B04F6FE28F19A6A00176E17 /* MetalProduct-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MetalProduct-Bridging-Header.h"; sourceTree = "<group>"; };
+		5B04F6FF28F19A6A00176E17 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		5B04F70028F19A6A00176E17 /* Data.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
+		5B04F70228F19B9900176E17 /* DFMetalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMetalData.h; sourceTree = "<group>"; };
+		5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMetalDetailVC.swift; sourceTree = "<group>"; };
+		5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalRectangleRender.swift; sourceTree = "<group>"; };
 		5B3148F728F14BAC003326DA /* MetalProduct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalProduct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3148FA28F14BAC003326DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B31490328F14BAD003326DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,11 +87,18 @@
 				5B04F6F828F1756C00176E17 /* Metal渲染流程.png */,
 				5B3148FA28F14BAC003326DA /* AppDelegate.swift */,
 				5B31490E28F14DCB003326DA /* UIMetalMainVC.swift */,
+				5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */,
 				5B04F6F428F1668800176E17 /* DFMetalApi.swift */,
-				5B04F6F628F16A2400176E17 /* DFMetalRender.swift */,
+				5B04F6F628F16A2400176E17 /* DFMetalTriangleRender.swift */,
+				5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */,
+				5B04F70228F19B9900176E17 /* DFMetalData.h */,
+				5B04F6FF28F19A6A00176E17 /* Data.h */,
+				5B04F70028F19A6A00176E17 /* Data.m */,
+				5B04F6FC28F1841100176E17 /* DFTriangleShader.metal */,
 				5B31490328F14BAD003326DA /* Assets.xcassets */,
 				5B31490528F14BAD003326DA /* LaunchScreen.storyboard */,
 				5B31490828F14BAD003326DA /* Info.plist */,
+				5B04F6FE28F19A6A00176E17 /* MetalProduct-Bridging-Header.h */,
 			);
 			path = MetalProduct;
 			sourceTree = "<group>";
@@ -105,6 +123,7 @@
 				5B3148F328F14BAC003326DA /* Sources */,
 				5B3148F428F14BAC003326DA /* Frameworks */,
 				5B3148F528F14BAC003326DA /* Resources */,
+				02879861D0852E20A7150524 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,6 +146,7 @@
 				TargetAttributes = {
 					5B3148F628F14BAC003326DA = {
 						CreatedOnToolsVersion = 14.0.1;
+						LastSwiftMigration = 1400;
 					};
 				};
 			};
@@ -162,6 +182,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02879861D0852E20A7150524 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetalProduct/Pods-MetalProduct-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MetalProduct/Pods-MetalProduct-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MetalProduct/Pods-MetalProduct-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7A2295B1219054D1F93B44DB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,9 +229,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B04F6F528F1668800176E17 /* DFMetalApi.swift in Sources */,
+				5B04F70628F3CBA200176E17 /* DFMetalRectangleRender.swift in Sources */,
 				5B3148FB28F14BAC003326DA /* AppDelegate.swift in Sources */,
+				5B04F70428F3C4B000176E17 /* UIMetalDetailVC.swift in Sources */,
 				5B31490F28F14DCB003326DA /* UIMetalMainVC.swift in Sources */,
-				5B04F6F728F16A2400176E17 /* DFMetalRender.swift in Sources */,
+				5B04F70128F19A6A00176E17 /* Data.m in Sources */,
+				5B04F6FD28F1841100176E17 /* DFTriangleShader.metal in Sources */,
+				5B04F6F728F16A2400176E17 /* DFMetalTriangleRender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -316,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -332,6 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BA7B73JZ4L;
@@ -342,7 +384,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,6 +393,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.longfeiwang.MetalProduct;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalProduct/MetalProduct-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -362,6 +406,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BA7B73JZ4L;
@@ -372,7 +417,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,6 +426,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.longfeiwang.MetalProduct;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalProduct/MetalProduct-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

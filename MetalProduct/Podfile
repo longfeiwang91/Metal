@@ -6,5 +6,7 @@ target 'MetalProduct' do
   use_frameworks!
 
   # Pods for MetalProduct
+  
+  pod 'SnapKit'
 
 end
