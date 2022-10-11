@@ -45,6 +45,10 @@ class UIMetalDetailVC: UIViewController {
             render = DFMetalTriangleRender(mtkView)
         case .rectangle:
             render = DFMetalRectangleRender(mtkView)
+        case .rotation:
+            render = DFMetalRotationRender(mtkView)
+            
+            render?.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
             
         }
         
@@ -67,8 +71,6 @@ class UIMetalDetailVC: UIViewController {
         let view = MTKView(frame: UIScreen.main.bounds)
         
         view.device = DFMetalApi.shareInstace.metalDevice
-        
-        view.preferredFramesPerSecond = 2
         
         return view
     }()

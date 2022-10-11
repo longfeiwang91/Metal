@@ -15,6 +15,8 @@ public enum MetalType: UInt {
     case triangle
     
     case rectangle
+    
+    case rotation
 }
 
 class UIMetalMainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -75,7 +77,8 @@ class UIMetalMainVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         
         let array: [MetalType] = [
             .triangle,
-            .rectangle
+            .rectangle,
+            .rotation
         ]
         return array
     }()

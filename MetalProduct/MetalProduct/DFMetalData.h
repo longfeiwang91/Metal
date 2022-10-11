@@ -16,7 +16,15 @@ typedef struct {
     vector_float4 pos;
     vector_float4 color;
     
-} CCVertex ;
+} DFVertex ;
+
+
+typedef struct {
+    
+    simd_float4x4 matrix;
+    
+    
+} DFMatrixContent;
 
 
 #endif /* DFMetalData_h */

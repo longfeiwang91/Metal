@@ -1,8 +1,8 @@
 //
-//  DFTriangleShader.metal
+//  DFRotateShader.metal
 //  MetalProduct
 //
-//  Created by 王龙飞 on 2022/10/8.
+//  Created by 王龙飞 on 2022/10/11.
 //
 
 #include <metal_stdlib>
@@ -22,12 +22,13 @@ typedef  struct {
 //// 顶点着色器的输出 是片源着色器的输入
 
 /// 顶点着色器
-vertex RasterizerData vertexShader(uint vid [[vertex_id]],
-                                   constant DFVertex *vertexs [[buffer(0)]]) {
+vertex RasterizerData vertexRotateShader(uint vid [[vertex_id]],
+                                   constant DFVertex *vertexs [[buffer(0)]],
+                                   constant DFMatrixContent& mvp [[buffer(1)]]) {
     
     RasterizerData outData;
     
-    outData.position = vertexs[vid].pos;
+    outData.position = mvp.matrix * vertexs[vid].pos;
     
     outData.color = vertexs[vid].color;
     
@@ -36,7 +37,9 @@ vertex RasterizerData vertexShader(uint vid [[vertex_id]],
 
 
 /// 片源着色器
-fragment float4 fragmentShader(RasterizerData inData [[stage_in]]) {
+fragment float4 fragmentRotateShader(RasterizerData inData [[stage_in]]) {
     
     return inData.color;
 }
+
+

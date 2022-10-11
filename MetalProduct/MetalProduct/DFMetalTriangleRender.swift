@@ -21,10 +21,10 @@ class DFMetalTriangleRender: NSObject, MTKViewDelegate {
     private var renderPipelineState: MTLRenderPipelineState!
     private var triangleBuffer: MTLBuffer?
     
-    private var triangleVertexs: [CCVertex] = [
-        CCVertex(pos: vector_float4(-0.5, -0.5, 0, 1.0), color: vector_float4(1, 0, 0, 1)),
-        CCVertex(pos: vector_float4( 0.5, -0.5, 0, 1.0), color: vector_float4(0, 1, 0, 1)),
-        CCVertex(pos: vector_float4( 0.0,  0.5, 0, 1.0), color: vector_float4(0, 0, 1, 1)),
+    private var triangleVertexs: [DFVertex] = [
+        DFVertex(pos: vector_float4(-0.5, -0.5, 0, 1.0), color: vector_float4(1, 0, 0, 1)),
+        DFVertex(pos: vector_float4( 0.5, -0.5, 0, 1.0), color: vector_float4(0, 1, 0, 1)),
+        DFVertex(pos: vector_float4( 0.0,  0.5, 0, 1.0), color: vector_float4(0, 0, 1, 1)),
     ]
     
     init(_ mtkView: MTKView) {
@@ -55,7 +55,7 @@ class DFMetalTriangleRender: NSObject, MTKViewDelegate {
             print("create render pipeline failed\(error)")
         }
         
-        triangleBuffer = device?.makeBuffer(bytes: triangleVertexs, length: triangleVertexs.count * MemoryLayout<CCVertex>.size, options: .storageModeShared)
+        triangleBuffer = device?.makeBuffer(bytes: triangleVertexs, length: triangleVertexs.count * MemoryLayout<DFVertex>.size, options: .storageModeShared)
         
     }
     

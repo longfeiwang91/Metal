@@ -15,10 +15,13 @@
 		5B04F70128F19A6A00176E17 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70028F19A6A00176E17 /* Data.m */; };
 		5B04F70428F3C4B000176E17 /* UIMetalDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */; };
 		5B04F70628F3CBA200176E17 /* DFMetalRectangleRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */; };
+		5B04F70A28F3F27000176E17 /* DFMatrix4*4Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B04F70928F3F27000176E17 /* DFMatrix4*4Helpers.swift */; };
 		5B3148FB28F14BAC003326DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3148FA28F14BAC003326DA /* AppDelegate.swift */; };
 		5B31490428F14BAD003326DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B31490328F14BAD003326DA /* Assets.xcassets */; };
 		5B31490728F14BAD003326DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B31490528F14BAD003326DA /* LaunchScreen.storyboard */; };
 		5B31490F28F14DCB003326DA /* UIMetalMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B31490E28F14DCB003326DA /* UIMetalMainVC.swift */; };
+		5B91C1B028F547B200DF641F /* DFMetalRotationRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1AF28F547B200DF641F /* DFMetalRotationRender.swift */; };
+		5B91C1B228F54C8F00DF641F /* DFRotateShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B128F54C8F00DF641F /* DFRotateShader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +37,15 @@
 		5B04F70228F19B9900176E17 /* DFMetalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFMetalData.h; sourceTree = "<group>"; };
 		5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMetalDetailVC.swift; sourceTree = "<group>"; };
 		5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalRectangleRender.swift; sourceTree = "<group>"; };
+		5B04F70928F3F27000176E17 /* DFMatrix4*4Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DFMatrix4*4Helpers.swift"; sourceTree = "<group>"; };
 		5B3148F728F14BAC003326DA /* MetalProduct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalProduct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3148FA28F14BAC003326DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B31490328F14BAD003326DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B31490628F14BAD003326DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B31490828F14BAD003326DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B31490E28F14DCB003326DA /* UIMetalMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMetalMainVC.swift; sourceTree = "<group>"; };
+		5B91C1AF28F547B200DF641F /* DFMetalRotationRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalRotationRender.swift; sourceTree = "<group>"; };
+		5B91C1B128F54C8F00DF641F /* DFRotateShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DFRotateShader.metal; sourceTree = "<group>"; };
 		C356B75CF014DF5952FCFC44 /* Pods_MetalProduct.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetalProduct.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,13 +94,16 @@
 				5B3148FA28F14BAC003326DA /* AppDelegate.swift */,
 				5B31490E28F14DCB003326DA /* UIMetalMainVC.swift */,
 				5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */,
+				5B04F70928F3F27000176E17 /* DFMatrix4*4Helpers.swift */,
 				5B04F6F428F1668800176E17 /* DFMetalApi.swift */,
 				5B04F6F628F16A2400176E17 /* DFMetalTriangleRender.swift */,
 				5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */,
+				5B91C1AF28F547B200DF641F /* DFMetalRotationRender.swift */,
 				5B04F70228F19B9900176E17 /* DFMetalData.h */,
 				5B04F6FF28F19A6A00176E17 /* Data.h */,
 				5B04F70028F19A6A00176E17 /* Data.m */,
 				5B04F6FC28F1841100176E17 /* DFTriangleShader.metal */,
+				5B91C1B128F54C8F00DF641F /* DFRotateShader.metal */,
 				5B31490328F14BAD003326DA /* Assets.xcassets */,
 				5B31490528F14BAD003326DA /* LaunchScreen.storyboard */,
 				5B31490828F14BAD003326DA /* Info.plist */,
@@ -229,11 +238,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B04F6F528F1668800176E17 /* DFMetalApi.swift in Sources */,
+				5B91C1B028F547B200DF641F /* DFMetalRotationRender.swift in Sources */,
 				5B04F70628F3CBA200176E17 /* DFMetalRectangleRender.swift in Sources */,
+				5B91C1B228F54C8F00DF641F /* DFRotateShader.metal in Sources */,
 				5B3148FB28F14BAC003326DA /* AppDelegate.swift in Sources */,
 				5B04F70428F3C4B000176E17 /* UIMetalDetailVC.swift in Sources */,
 				5B31490F28F14DCB003326DA /* UIMetalMainVC.swift in Sources */,
 				5B04F70128F19A6A00176E17 /* Data.m in Sources */,
+				5B04F70A28F3F27000176E17 /* DFMatrix4*4Helpers.swift in Sources */,
 				5B04F6FD28F1841100176E17 /* DFTriangleShader.metal in Sources */,
 				5B04F6F728F16A2400176E17 /* DFMetalTriangleRender.swift in Sources */,
 			);
