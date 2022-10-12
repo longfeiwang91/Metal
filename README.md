@@ -1,7 +1,8 @@
 # Metal 
 iOS/macos metal 
 
-使用Swift MetalKit做的项目
+
+Swift5 MetalKit项目
 
 triangle 三角形
     
