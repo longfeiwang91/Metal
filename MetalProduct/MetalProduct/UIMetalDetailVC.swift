@@ -54,7 +54,14 @@ class UIMetalDetailVC: UIViewController {
             render = DFMetalCubeRender(mtkView)
             
             render?.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
+        case .rectuv:
+            render = DFMetalRectUVRender(mtkView)
             
+            render?.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
+        case .cubeuv:
+            render = DFMetalCubeUVRender(mtkView)
+            
+            render?.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
         }
         
        

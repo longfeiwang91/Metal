@@ -11,7 +11,7 @@ import simd
 
 import MetalKit
 
-class DFMetalUVRender: NSObject, MTKViewDelegate {
+class DFMetalCubeUVRender: NSObject, MTKViewDelegate {
     
     private var m_angle: Float = 0.0
     private var m_viewportSize: vector_uint2 = .zero
@@ -29,26 +29,50 @@ class DFMetalUVRender: NSObject, MTKViewDelegate {
     
     private var cubeIndexBuffer: MTLBuffer?
     
-    private var cubeVertexs: [DFVertex] = [
+    private var quadrTextures: [MTLTexture] = []
+    
+    private var cubeVertexs: [DFVertex6] = [
         
-        DFVertex(pos: vector_float4( -1.0,  1.0,  1.0, 1.0), color: vector_float4(1.0, 0.0, 0.0, 1)),
-        DFVertex(pos: vector_float4( -1.0, -1.0,  1.0, 1.0), color: vector_float4(0, 1, 0, 1)),
-        DFVertex(pos: vector_float4(  1.0, -1.0,  1.0, 1.0), color: vector_float4(0, 0, 1, 1)),
-        DFVertex(pos: vector_float4(  1.0,  1.0,  1.0, 1.0), color: vector_float4(1, 0, 1, 1)),
-        DFVertex(pos: vector_float4( -1.0,  1.0, -1.0, 1.0), color: vector_float4(0, 0, 1, 1)),
-        DFVertex(pos: vector_float4( -1.0, -1.0, -1.0, 1.0), color: vector_float4(0, 1, 0, 1)),
-        DFVertex(pos: vector_float4(  1.0, -1.0, -1.0, 1.0), color: vector_float4(1, 0, 0, 1)),
-        DFVertex(pos: vector_float4(  1.0,  1.0, -1.0, 1.0), color: vector_float4(1, 0, 1, 1)),
+        DFVertex6(pos: vector_float4( -1.0, -1.0,  1.0, 1.0), uv: vector_float2( 0, 0)),
+        DFVertex6(pos: vector_float4( -1.0,  1.0,  1.0, 1.0), uv: vector_float2( 0, 1)),
+        DFVertex6(pos: vector_float4(  1.0, -1.0,  1.0, 1.0), uv: vector_float2( 1, 0)),
+        DFVertex6(pos: vector_float4(  1.0,  1.0,  1.0, 1.0), uv: vector_float2( 1, 1)),
+        
+        DFVertex6(pos: vector_float4(  1.0, -1.0, -1.0, 1.0), uv: vector_float2( 0, 0)),
+        DFVertex6(pos: vector_float4(  1.0,  1.0, -1.0, 1.0), uv: vector_float2( 0, 1)),
+        DFVertex6(pos: vector_float4( -1.0, -1.0, -1.0, 1.0), uv: vector_float2( 1, 0)),
+        DFVertex6(pos: vector_float4( -1.0,  1.0, -1.0, 1.0), uv: vector_float2( 1, 1)),
+        
+        DFVertex6(pos: vector_float4( -1.0, -1.0, -1.0, 1.0), uv: vector_float2( 0, 0)),
+        DFVertex6(pos: vector_float4( -1.0,  1.0, -1.0, 1.0), uv: vector_float2( 0, 1)),
+        DFVertex6(pos: vector_float4( -1.0, -1.0,  1.0, 1.0), uv: vector_float2( 1, 0)),
+        DFVertex6(pos: vector_float4( -1.0,  1.0,  1.0, 1.0), uv: vector_float2( 1, 1)),
+        
+        DFVertex6(pos: vector_float4(  1.0, -1.0,  1.0, 1.0), uv: vector_float2( 0, 0)),
+        DFVertex6(pos: vector_float4(  1.0,  1.0,  1.0, 1.0), uv: vector_float2( 0, 1)),
+        DFVertex6(pos: vector_float4(  1.0, -1.0, -1.0, 1.0), uv: vector_float2( 1, 0)),
+        DFVertex6(pos: vector_float4(  1.0,  1.0, -1.0, 1.0), uv: vector_float2( 1, 1)),
+        
+        DFVertex6(pos: vector_float4( -1.0,  1.0,  1.0, 1.0), uv: vector_float2( 0, 0)),
+        DFVertex6(pos: vector_float4( -1.0,  1.0, -1.0, 1.0), uv: vector_float2( 0, 1)),
+        DFVertex6(pos: vector_float4(  1.0,  1.0,  1.0, 1.0), uv: vector_float2( 1, 0)),
+        DFVertex6(pos: vector_float4(  1.0,  1.0, -1.0, 1.0), uv: vector_float2( 1, 1)),
+        
+        DFVertex6(pos: vector_float4( -1.0, -1.0, -1.0, 1.0), uv: vector_float2( 0, 0)),
+        DFVertex6(pos: vector_float4( -1.0, -1.0,  1.0, 1.0), uv: vector_float2( 0, 1)),
+        DFVertex6(pos: vector_float4(  1.0, -1.0, -1.0, 1.0), uv: vector_float2( 1, 0)),
+        DFVertex6(pos: vector_float4(  1.0, -1.0,  1.0, 1.0), uv: vector_float2( 1, 1)),
+    
     ]
     
     
     private let cubeIndexVertex: [UInt16] = [
-        0, 1, 2,  0, 2, 3, //Front
-        4, 6, 5,  4, 7, 6, //Back
-        4, 5, 1,  4, 1, 0, //Left
-        3, 6, 7,  3, 2, 6, //Right
-        4, 0, 3,  4, 3, 7, //Top
-        1, 5, 6,  1, 6, 2, //Bottom
+         0,  1,  2,   1,  3,  2, //Front
+         4,  5,  6,   5,  7,  6, //Back
+         8,  9, 10,   9, 11, 10, //Left
+        12, 13, 14,  13, 15, 14, //Right
+        16, 17, 18,  17, 19, 18, //Top
+        20, 21, 22,  21, 23, 22, //Bottom
     ]
     
     init(_ mtkView: MTKView) {
@@ -61,8 +85,8 @@ class DFMetalUVRender: NSObject, MTKViewDelegate {
         
         let library = device?.makeDefaultLibrary()
         
-        let vertexFunction = library?.makeFunction(name: "vertexRotateShader")
-        let fragmentFunction = library?.makeFunction(name: "fragmentRotateShader")
+        let vertexFunction = library?.makeFunction(name: "vertexUVShader")
+        let fragmentFunction = library?.makeFunction(name: "fragmentUVShader")
         
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = vertexFunction
@@ -89,6 +113,15 @@ class DFMetalUVRender: NSObject, MTKViewDelegate {
                                          length: cubeIndexVertex.count * MemoryLayout<UInt16>.size,
                                          options: .storageModeShared)
         
+        if let mtkDevice = device {
+            
+            for index in 1...6 {
+                
+                let texture = DFMetalTexture(name: "\(index)", device: mtkDevice).texture
+                
+                quadrTextures.append(texture!)
+            }
+        }
     }
     
     //MARK: - delegate
@@ -105,11 +138,18 @@ class DFMetalUVRender: NSObject, MTKViewDelegate {
         
         
         /// 缩放矩阵
-        let scaleMatrix = simd_float4x4(scaleX: 0.5, y: 0.5, z: 0.5)
+        let scaleMatrix = simd_float4x4(scaleX: 0.8, y: 0.8, z: 0.8)
         
         
-        /// 旋转矩阵
-        let rotateMatrix = simd_float4x4(rotationAngle: m_angle, x: 0, y: 1, z: 0)
+        /// 旋转矩阵 在不同分量
+        let rotateXMatrix = simd_float4x4(rotationAngle: m_angle, x: 1, y: 0, z: 0)
+        
+        let rotateYMatrix = simd_float4x4(rotationAngle: m_angle, x: 0, y: 1, z: 0)
+        
+        let rotateZMatrix = simd_float4x4(rotationAngle: m_angle, x: 0, y: 0, z: 1)
+        
+        let rotateMatrix0 = matrix_multiply(rotateYMatrix, rotateXMatrix)
+        let rotateMatrix1 = matrix_multiply(rotateZMatrix, rotateMatrix0)
         
         /// 平移矩阵
         let transMatrix = simd_float4x4(translationX: 0, y: 0, z: -3)
@@ -117,7 +157,7 @@ class DFMetalUVRender: NSObject, MTKViewDelegate {
         
         /// matrix_multiply(a , b)  顺序是 b * a
         
-        let modelMatrix = matrix_multiply(transMatrix, matrix_multiply(rotateMatrix, scaleMatrix))
+        let modelMatrix = matrix_multiply(transMatrix, matrix_multiply(rotateMatrix1, scaleMatrix))
         
         let aspect = Float(m_viewportSize.x) / Float(m_viewportSize.y)
         
@@ -143,16 +183,23 @@ class DFMetalUVRender: NSObject, MTKViewDelegate {
             commandEncoder?.setVertexBuffer(cubeBuffer, offset: 0, index: 0)
             
             commandEncoder?.setVertexBytes(&m_matrix, length: MemoryLayout<DFMatrixContent>.size, index: 1)
-            
-            
+        
             commandEncoder?.setFrontFacing(.clockwise)
             
             ///  设置背面剔除
             commandEncoder?.setCullMode(.back)
             
             
-            commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: cubeIndexVertex.count, indexType: .uint16, indexBuffer: cubeIndexBuffer!, indexBufferOffset: 0)
             
+            for index in 0...5 {
+                
+                commandEncoder?.setFragmentTexture(self.quadrTextures[index], index: 0)
+                
+                commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: cubeIndexVertex.count / 6, indexType: .uint16, indexBuffer: cubeIndexBuffer!, indexBufferOffset: index * 6 * MemoryLayout<UInt16>.size)
+                
+            }
+            
+
             commandEncoder?.endEncoding()
             
             if let drawable = view.currentDrawable {

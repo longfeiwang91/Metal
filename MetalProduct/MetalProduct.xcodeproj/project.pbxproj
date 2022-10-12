@@ -24,7 +24,16 @@
 		5B91C1B228F54C8F00DF641F /* DFRotateShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B128F54C8F00DF641F /* DFRotateShader.metal */; };
 		5B91C1B428F69E1D00DF641F /* DFMetalCubeRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B328F69E1D00DF641F /* DFMetalCubeRender.swift */; };
 		5B91C1B628F6AAD200DF641F /* DFMetalTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B528F6AAD200DF641F /* DFMetalTexture.swift */; };
-		5B91C1B828F6AF7C00DF641F /* DFMetalUVRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B728F6AF7C00DF641F /* DFMetalUVRender.swift */; };
+		5B91C1B828F6AF7C00DF641F /* DFMetalCubeUVRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B728F6AF7C00DF641F /* DFMetalCubeUVRender.swift */; };
+		5B91C1BA28F6C1CF00DF641F /* DFMetalRectUVRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1B928F6C1CF00DF641F /* DFMetalRectUVRender.swift */; };
+		5B91C1BC28F6EB2600DF641F /* DFUVShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5B91C1BB28F6EB2600DF641F /* DFUVShader.metal */; };
+		5B91C1C028F6ED3000DF641F /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1BF28F6ED3000DF641F /* image.png */; };
+		5B91C1D428F6F2C000DF641F /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1C128F6F2C000DF641F /* 1.png */; };
+		5B91C1D528F6F2C000DF641F /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1C228F6F2C000DF641F /* 6.png */; };
+		5B91C1D628F6F2C000DF641F /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1C328F6F2C000DF641F /* 5.png */; };
+		5B91C1D728F6F2C000DF641F /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1C428F6F2C000DF641F /* 3.png */; };
+		5B91C1D828F6F2C000DF641F /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1C528F6F2C000DF641F /* 2.png */; };
+		5B91C1D928F6F2C000DF641F /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C1C628F6F2C000DF641F /* 4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +60,16 @@
 		5B91C1B128F54C8F00DF641F /* DFRotateShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DFRotateShader.metal; sourceTree = "<group>"; };
 		5B91C1B328F69E1D00DF641F /* DFMetalCubeRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalCubeRender.swift; sourceTree = "<group>"; };
 		5B91C1B528F6AAD200DF641F /* DFMetalTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalTexture.swift; sourceTree = "<group>"; };
-		5B91C1B728F6AF7C00DF641F /* DFMetalUVRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalUVRender.swift; sourceTree = "<group>"; };
+		5B91C1B728F6AF7C00DF641F /* DFMetalCubeUVRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalCubeUVRender.swift; sourceTree = "<group>"; };
+		5B91C1B928F6C1CF00DF641F /* DFMetalRectUVRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFMetalRectUVRender.swift; sourceTree = "<group>"; };
+		5B91C1BB28F6EB2600DF641F /* DFUVShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DFUVShader.metal; sourceTree = "<group>"; };
+		5B91C1BF28F6ED3000DF641F /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		5B91C1C128F6F2C000DF641F /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		5B91C1C228F6F2C000DF641F /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		5B91C1C328F6F2C000DF641F /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		5B91C1C428F6F2C000DF641F /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		5B91C1C528F6F2C000DF641F /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		5B91C1C628F6F2C000DF641F /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		C356B75CF014DF5952FCFC44 /* Pods_MetalProduct.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetalProduct.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +115,13 @@
 			isa = PBXGroup;
 			children = (
 				5B04F6F828F1756C00176E17 /* Metal渲染流程.png */,
+				5B91C1BF28F6ED3000DF641F /* image.png */,
+				5B91C1C128F6F2C000DF641F /* 1.png */,
+				5B91C1C528F6F2C000DF641F /* 2.png */,
+				5B91C1C428F6F2C000DF641F /* 3.png */,
+				5B91C1C628F6F2C000DF641F /* 4.png */,
+				5B91C1C328F6F2C000DF641F /* 5.png */,
+				5B91C1C228F6F2C000DF641F /* 6.png */,
 				5B3148FA28F14BAC003326DA /* AppDelegate.swift */,
 				5B31490E28F14DCB003326DA /* UIMetalMainVC.swift */,
 				5B04F70328F3C4B000176E17 /* UIMetalDetailVC.swift */,
@@ -106,13 +131,15 @@
 				5B04F70528F3CBA200176E17 /* DFMetalRectangleRender.swift */,
 				5B91C1AF28F547B200DF641F /* DFMetalRotationRender.swift */,
 				5B91C1B328F69E1D00DF641F /* DFMetalCubeRender.swift */,
-				5B91C1B728F6AF7C00DF641F /* DFMetalUVRender.swift */,
+				5B91C1B928F6C1CF00DF641F /* DFMetalRectUVRender.swift */,
+				5B91C1B728F6AF7C00DF641F /* DFMetalCubeUVRender.swift */,
 				5B91C1B528F6AAD200DF641F /* DFMetalTexture.swift */,
 				5B04F70228F19B9900176E17 /* DFMetalData.h */,
 				5B04F6FF28F19A6A00176E17 /* Data.h */,
 				5B04F70028F19A6A00176E17 /* Data.m */,
 				5B04F6FC28F1841100176E17 /* DFTriangleShader.metal */,
 				5B91C1B128F54C8F00DF641F /* DFRotateShader.metal */,
+				5B91C1BB28F6EB2600DF641F /* DFUVShader.metal */,
 				5B31490328F14BAD003326DA /* Assets.xcassets */,
 				5B31490528F14BAD003326DA /* LaunchScreen.storyboard */,
 				5B31490828F14BAD003326DA /* Info.plist */,
@@ -191,9 +218,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B91C1D528F6F2C000DF641F /* 6.png in Resources */,
 				5B31490728F14BAD003326DA /* LaunchScreen.storyboard in Resources */,
 				5B31490428F14BAD003326DA /* Assets.xcassets in Resources */,
+				5B91C1D728F6F2C000DF641F /* 3.png in Resources */,
 				5B04F6F928F1756C00176E17 /* Metal渲染流程.png in Resources */,
+				5B91C1D628F6F2C000DF641F /* 5.png in Resources */,
+				5B91C1D828F6F2C000DF641F /* 2.png in Resources */,
+				5B91C1C028F6ED3000DF641F /* image.png in Resources */,
+				5B91C1D928F6F2C000DF641F /* 4.png in Resources */,
+				5B91C1D428F6F2C000DF641F /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +290,10 @@
 				5B31490F28F14DCB003326DA /* UIMetalMainVC.swift in Sources */,
 				5B04F70128F19A6A00176E17 /* Data.m in Sources */,
 				5B04F70A28F3F27000176E17 /* DFMatrix4*4Helpers.swift in Sources */,
-				5B91C1B828F6AF7C00DF641F /* DFMetalUVRender.swift in Sources */,
+				5B91C1BA28F6C1CF00DF641F /* DFMetalRectUVRender.swift in Sources */,
+				5B91C1B828F6AF7C00DF641F /* DFMetalCubeUVRender.swift in Sources */,
 				5B04F6FD28F1841100176E17 /* DFTriangleShader.metal in Sources */,
+				5B91C1BC28F6EB2600DF641F /* DFUVShader.metal in Sources */,
 				5B04F6F728F16A2400176E17 /* DFMetalTriangleRender.swift in Sources */,
 				5B91C1B628F6AAD200DF641F /* DFMetalTexture.swift in Sources */,
 			);
