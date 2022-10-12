@@ -1,17 +1,17 @@
 //
-//  DFMetalRotationRender.swift
+//  DFMetalUVRender.swift
 //  MetalProduct
 //
-//  Created by 王龙飞 on 2022/10/11.
+//  Created by 王龙飞 on 2022/10/12.
 //
 
-import UIKit
+import Foundation
 
 import simd
 
 import MetalKit
 
-class DFMetalRotationRender: NSObject, MTKViewDelegate {
+class DFMetalUVRender: NSObject, MTKViewDelegate {
     
     private var m_angle: Float = 0.0
     private var m_viewportSize: vector_uint2 = .zero
@@ -25,21 +25,30 @@ class DFMetalRotationRender: NSObject, MTKViewDelegate {
     
     private var renderPipelineState: MTLRenderPipelineState!
     
-    private var rectBuffer: MTLBuffer?
+    private var cubeBuffer: MTLBuffer?
     
-    private var indexBuffer: MTLBuffer?
+    private var cubeIndexBuffer: MTLBuffer?
     
-    private var rectVertexs: [DFVertex] = [
+    private var cubeVertexs: [DFVertex] = [
         
-        DFVertex(pos: vector_float4(  0.5,  0.5, 0, 1.0), color: vector_float4(0, 0, 1, 1)),
-        DFVertex(pos: vector_float4( -0.5,  0.5, 0, 1.0), color: vector_float4(0, 1, 0, 1)),
-        DFVertex(pos: vector_float4(  0.5, -0.5, 0, 1.0), color: vector_float4(1, 0, 0, 1)),
-        DFVertex(pos: vector_float4( -0.5, -0.5, 0, 1.0), color: vector_float4(1, 1, 0, 1)),
+        DFVertex(pos: vector_float4( -1.0,  1.0,  1.0, 1.0), color: vector_float4(1.0, 0.0, 0.0, 1)),
+        DFVertex(pos: vector_float4( -1.0, -1.0,  1.0, 1.0), color: vector_float4(0, 1, 0, 1)),
+        DFVertex(pos: vector_float4(  1.0, -1.0,  1.0, 1.0), color: vector_float4(0, 0, 1, 1)),
+        DFVertex(pos: vector_float4(  1.0,  1.0,  1.0, 1.0), color: vector_float4(1, 0, 1, 1)),
+        DFVertex(pos: vector_float4( -1.0,  1.0, -1.0, 1.0), color: vector_float4(0, 0, 1, 1)),
+        DFVertex(pos: vector_float4( -1.0, -1.0, -1.0, 1.0), color: vector_float4(0, 1, 0, 1)),
+        DFVertex(pos: vector_float4(  1.0, -1.0, -1.0, 1.0), color: vector_float4(1, 0, 0, 1)),
+        DFVertex(pos: vector_float4(  1.0,  1.0, -1.0, 1.0), color: vector_float4(1, 0, 1, 1)),
     ]
     
     
-    private let indexVertex: [UInt16] = [
-        0, 1, 2,  2, 1, 3
+    private let cubeIndexVertex: [UInt16] = [
+        0, 1, 2,  0, 2, 3, //Front
+        4, 6, 5,  4, 7, 6, //Back
+        4, 5, 1,  4, 1, 0, //Left
+        3, 6, 7,  3, 2, 6, //Right
+        4, 0, 3,  4, 3, 7, //Top
+        1, 5, 6,  1, 6, 2, //Bottom
     ]
     
     init(_ mtkView: MTKView) {
@@ -72,12 +81,12 @@ class DFMetalRotationRender: NSObject, MTKViewDelegate {
             print("create render pipline failed \(error)")
         }
         
-        rectBuffer = device?.makeBuffer(bytes: rectVertexs,
-                                        length: rectVertexs.count * MemoryLayout<DFVertex>.size,
+        cubeBuffer = device?.makeBuffer(bytes: cubeVertexs,
+                                        length: cubeVertexs.count * MemoryLayout<DFVertex>.size,
                                         options: .storageModeShared)
         
-        indexBuffer = device?.makeBuffer(bytes: indexVertex,
-                                         length: indexVertex.count * MemoryLayout<UInt16>.size,
+        cubeIndexBuffer = device?.makeBuffer(bytes: cubeIndexVertex,
+                                         length: cubeIndexVertex.count * MemoryLayout<UInt16>.size,
                                          options: .storageModeShared)
         
     }
@@ -100,12 +109,15 @@ class DFMetalRotationRender: NSObject, MTKViewDelegate {
         
         
         /// 旋转矩阵
-        let rotateMatrix = simd_float4x4(rotationAngle: m_angle, x: 0, y: 0, z: 1)
+        let rotateMatrix = simd_float4x4(rotationAngle: m_angle, x: 0, y: 1, z: 0)
         
         /// 平移矩阵
-        let transMatrix = simd_float4x4(translationX: 0, y: 0, z: -1)
+        let transMatrix = simd_float4x4(translationX: 0, y: 0, z: -3)
         
-        let modelMatrix = matrix_multiply(scaleMatrix, matrix_multiply(rotateMatrix, transMatrix))
+        
+        /// matrix_multiply(a , b)  顺序是 b * a
+        
+        let modelMatrix = matrix_multiply(transMatrix, matrix_multiply(rotateMatrix, scaleMatrix))
         
         let aspect = Float(m_viewportSize.x) / Float(m_viewportSize.y)
         
@@ -128,13 +140,18 @@ class DFMetalRotationRender: NSObject, MTKViewDelegate {
             let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
             
             commandEncoder?.setRenderPipelineState(renderPipelineState)
-            commandEncoder?.setVertexBuffer(rectBuffer, offset: 0, index: 0)
+            commandEncoder?.setVertexBuffer(cubeBuffer, offset: 0, index: 0)
             
             commandEncoder?.setVertexBytes(&m_matrix, length: MemoryLayout<DFMatrixContent>.size, index: 1)
             
-            /// 绘制 不带indexbuffer的图形
-//            commandEncoder?.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: rectVertexs.count)
-            commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: indexVertex.count, indexType: .uint16, indexBuffer: indexBuffer!, indexBufferOffset: 0)
+            
+            commandEncoder?.setFrontFacing(.clockwise)
+            
+            ///  设置背面剔除
+            commandEncoder?.setCullMode(.back)
+            
+            
+            commandEncoder?.drawIndexedPrimitives(type: .triangle, indexCount: cubeIndexVertex.count, indexType: .uint16, indexBuffer: cubeIndexBuffer!, indexBufferOffset: 0)
             
             commandEncoder?.endEncoding()
             
@@ -150,4 +167,3 @@ class DFMetalRotationRender: NSObject, MTKViewDelegate {
     }
 
 }
-

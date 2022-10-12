@@ -50,6 +50,11 @@ class UIMetalDetailVC: UIViewController {
             
             render?.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
             
+        case .cube:
+            render = DFMetalCubeRender(mtkView)
+            
+            render?.mtkView(mtkView, drawableSizeWillChange: mtkView.drawableSize)
+            
         }
         
        

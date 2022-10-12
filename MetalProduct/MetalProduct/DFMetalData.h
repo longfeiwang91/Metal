@@ -16,7 +16,22 @@ typedef struct {
     vector_float4 pos;
     vector_float4 color;
     
-} DFVertex ;
+} DFVertex;
+
+
+typedef struct {
+    
+    vector_float4 pos;
+    vector_float4 uv;
+    
+} DFVertex8;
+
+typedef struct {
+    
+    vector_float4 pos;
+    vector_float2 uv;
+    
+} DFVertex6;
 
 
 typedef struct {
